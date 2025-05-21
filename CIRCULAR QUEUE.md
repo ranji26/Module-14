@@ -25,11 +25,61 @@ To write a Python program with a function to insert float values into a Circular
 ### PROGRAM
 
 ```
+# Queue simply works in FIFO
+class Queue:
+    def __init__(self, size):
+        self.items = [0] * size
+        self.max_size = size
+        self.head, self.tail, self.size = 0, 0, 0
+
+    def enqueue(self, item):
+        if self.is_list_full():
+            print(f'Queue is full')
+            return
+
+        #print(f'Inserting {item}')
+        self.items[self.tail] = item
+        self.tail = (self.tail + 1) % self.max_size
+        self.size += 1
+
+    def dequeue(self):
+        item = self.items[self.head]
+        self.head = (self.head + 1) % self.max_size
+        self.size -= 1
+
+        return item
+
+    def is_list_full(self):
+        if self.size == self.max_size:
+            return True
+        return False
+
+    def is_empty(self):
+        if self.size == 0:
+            return True
+        return False
+
+size=int(input())
+queue = Queue(size)
+str=float(input())
+str1=float(input())
+str2=float(input())
+queue.enqueue(str)
+queue.enqueue(str1)
+queue.enqueue(str2)
+
+    
+print(queue.items)
+#print(queue.head)
+#print(queue.tail)
 
 
 ```
 
 ### OUTPUT
 
+![image](https://github.com/user-attachments/assets/a6beebad-b480-4927-9ea5-c6024896be5a)
+
 
 ### RESULT
+Thus a Python program with a function to insert float values into a Circular Queue has been successfully implemenetd.
